@@ -41,3 +41,12 @@ class FileChanger:
             except Exception as e:
                 print(f"Blad w odczycie pliku: {e}")
                 return False
+            
+    def save_yaml(self, file_path: str) -> bool:
+        try:
+            with open(file_path, 'w', encoding='utf-8') as file:
+                yaml.dump(self.data, file, default_flow_style=False)
+            return True
+        except Exception as e:
+            print(f"Blad w zapisie pliku: {e}")
+            return False
