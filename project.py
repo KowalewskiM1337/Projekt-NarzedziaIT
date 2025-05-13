@@ -50,3 +50,16 @@ class FileChanger:
         except Exception as e:
             print(f"Blad w zapisie pliku: {e}")
             return False
+        
+    def load_xml(self, file_path: str) -> bool:
+        try:
+            tree = ET.parse(file_path)
+            root = tree.getroot()
+            self.data = self._xml_to_dict(root)
+            return True
+        except ET.ParseError as e:
+            print(f"Blad skladni: {e}")
+            return False
+        except Exception as e:
+            print(f"Blad w odczycie pliku: {e}")
+            return False
