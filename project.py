@@ -63,3 +63,13 @@ class FileChanger:
         except Exception as e:
             print(f"Blad w odczycie pliku: {e}")
             return False
+    
+    def save_xml(self, file_path: str) -> bool:
+        try:
+            root = self._dict_to_xml(self.data)
+            tree = ET.ElementTree(root)
+            tree.write(file_path, encoding='utf-8', xml_declaration=True)
+            return True
+        except Exception as e:
+            print(f"Blad w zapisie pliku: {e}")
+            return False
