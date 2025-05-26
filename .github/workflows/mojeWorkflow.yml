@@ -1,0 +1,27 @@
+name: Weekly Windows Workflow
+
+on:
+  schedule:
+    - cron: '0 10 * * 2'      
+  push:
+    branches:
+      - master                
+  workflow_dispatch:          
+
+jobs:
+  run-weekly-script:
+    runs-on: windows-latest   
+    defaults:
+      run:
+        shell: pwsh           
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: |
+
+      - name: Run installResources.ps1
+        run: |
+          .\installResources.ps1
